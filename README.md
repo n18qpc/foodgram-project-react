@@ -4,19 +4,18 @@
 
 ## Отличительной особенностью данного сервиса является возможность добавлять рецепты в "Список покупок" и скачать суммированный список продуктов перед походом в магазин.
 
-### Какие технологии использовались:
+### Технологии:
 - PostgreSQL
 - nginx
 - Python 3.8.5
 - Git (GitHub repository)
 - Docker (Docker hub repository)
-- Всяческая sparkles магия sparkles (подробнее в requirements.txt)
 --- 
 
-### Установка и запуск - давайте начнем:
+### Установка и запуск:
 1. Клонируйте репозиторий с проектом 
 ```bash
-git clone https://github.com/Uforick/foodgram-project-react.git
+git clone https://github.com/n18qpc/foodgram-project-react.git
 ```
 2. На сервере проекта установите `doker` и `docker-compose`
 ```bash 
@@ -44,13 +43,13 @@ docker-compose exec backend python manage.py createsuperuser
 docker-compose exec backend python manage.py collectstatic --no-input 
 ```
 ---
-![example workflow](https://github.com/Uforick/foodgram-project-react/actions/workflows/Foodgram_workflow.yml/badge.svg)
+![example workflow](https://github.com/n18qpc/foodgram-project-react/actions/workflows/Foodgram_workflow.yml/badge.svg)
 
-Доступно по адресу http://warmspace.ru/ 178.154.222.48
+Доступно по адресу 217.28.231.148
 
-админка:http://warmspace.ru/admin/ 
+админка:
 admin admin
 admin@ad.com
 
-Авторство github.com/Uforick
+Авторство github.com/n18qpc
 ---
