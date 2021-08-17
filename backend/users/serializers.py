@@ -109,14 +109,12 @@ class SubscribeSerializer(serializers.ModelSerializer):
         author = obj['author']
         subscribed = user.subscribed_on.filter(author=author).exists()
 
-        if (self.context.get('request').method == 'GET'
-            and (author == user or subscribed)):
+        if (self.context.get('request').method == 'GET' and (author == user or subscribed)):
             raise serializers.ValidationError(
                 'Вы или уже подписаны на этого автора, '
                 'или пытаетесь подписаться на себя, что невозможно')
 
-        if (self.context.get('request').method == 'DELETE'
-            and not subscribed):
+        if (self.context.get('request').method == 'DELETE' and not subscribed):
             raise serializers.ValidationError(
                 'Вы не подписаны на данного автора '
                 '(напоминание: на себя подписаться невозможно)')
