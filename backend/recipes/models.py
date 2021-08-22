@@ -57,7 +57,6 @@ class Ingredient(models.Model):
     name = models.CharField(
         max_length=200,
         verbose_name='Название',
-        unique=True,
     )
     measurement_unit = models.CharField(
         max_length=10,
@@ -121,18 +120,18 @@ class AddIngredientInRec(models.Model):
         Ingredient,
         on_delete=models.CASCADE,
         related_name='amounts',
-        verbose_name='Ингридиент для рецепта',
+        verbose_name='Ингридиент',
     )
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
         related_name='amounts',
-        verbose_name='Сам рецепт',
+        verbose_name='Рецепт',
     )
     amount = models.PositiveIntegerField()
 
     class Meta:
-        verbose_name = 'Количество или масса ингредиента'
+        verbose_name = 'Измерение ингредиента'
         constraints = [
             models.UniqueConstraint(
                 fields=['recipe', 'ingredient'],

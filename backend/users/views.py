@@ -81,7 +81,8 @@ class UserViewSet(viewsets.ModelViewSet):
             data=data,
             context={'request': request}
         )
-        if (request.method == 'GET' and serializer.is_valid()):
+        if (request.method == 'GET'
+            and serializer.is_valid()):
             Follow.objects.create(user=user, author=author)
             serializer = UserSerializer(
                 author,
@@ -92,7 +93,8 @@ class UserViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_201_CREATED
             )
 
-        if (request.method == 'DELETE' and serializer.is_valid()):
+        if (request.method == 'DELETE'
+            and serializer.is_valid()):
             Follow.objects.filter(user=user, author=author).delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 

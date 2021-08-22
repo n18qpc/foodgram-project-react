@@ -4,15 +4,16 @@
 
 ## Отличительной особенностью данного сервиса является возможность добавлять рецепты в "Список покупок" и скачать суммированный список продуктов перед походом в магазин.
 
-### Технологии:
+### Какие технологии использовались:
 - PostgreSQL
 - nginx
 - Python 3.8.5
 - Git (GitHub repository)
 - Docker (Docker hub repository)
+- Всяческая sparkles магия sparkles (подробнее в requirements.txt)
 --- 
 
-### Установка и запуск:
+### Установка и запуск - давайте начнем:
 1. Клонируйте репозиторий с проектом 
 ```bash
 git clone https://github.com/n18qpc/foodgram-project-react.git
@@ -45,9 +46,8 @@ docker-compose exec backend python manage.py collectstatic --no-input
 ---
 ![example workflow](https://github.com/n18qpc/foodgram-project-react/actions/workflows/Foodgram_workflow.yml/badge.svg)
 
-Доступно по адресу 217.28.231.148
+Доступно по адресу  217.28.231.148
 
-админка:
 admin admin
 admin@ad.com
 
