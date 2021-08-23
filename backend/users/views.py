@@ -44,11 +44,11 @@ class UserViewSet(viewsets.ModelViewSet):
             data=request.data,
             context={'request': request}
         )
-        serializer.is_valid()
-        new_password = serializer.validated_data['new_password']
-        self.request.user.set_password(new_password)
-        self.request.user.save()
-        return Response(data={}, status=status.HTTP_201_CREATED)
+        if serializer.is_valid():
+            new_password = serializer.validated_data['new_password']
+            self.request.user.set_password(new_password)
+            self.request.user.save()
+            return Response(data={}, status=status.HTTP_201_CREATED)
 
     @action(detail=False,
             methods=['get'],
@@ -81,8 +81,7 @@ class UserViewSet(viewsets.ModelViewSet):
             data=data,
             context={'request': request}
         )
-        if (request.method == 'GET'
-            and serializer.is_valid()):
+        if (request.method == 'GET' and serializer.is_valid()):
             Follow.objects.create(user=user, author=author)
             serializer = UserSerializer(
                 author,
@@ -93,8 +92,7 @@ class UserViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_201_CREATED
             )
 
-        if (request.method == 'DELETE'
-            and serializer.is_valid()):
+        if (request.method == 'DELETE' and serializer.is_valid()):
             Follow.objects.filter(user=user, author=author).delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
