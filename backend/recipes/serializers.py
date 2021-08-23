@@ -182,13 +182,11 @@ class FavoriteSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         recipe = obj['recipe']
 
-        if (self.context.get('request').method == 'GET'
-            and user.is_favorited.filter(recipe=recipe).exists()):
+        if (self.context.get('request').method == 'GET' and user.is_favorited.filter(recipe=recipe).exists()):
             raise serializers.ValidationError(
                 'Этот рецепт уже есть в избранном')
 
-        if (self.context.get('request').method == 'DELETE'
-            and not user.is_favorited.filter(recipe=recipe).exists()):
+        if (self.context.get('request').method == 'DELETE' and not user.is_favorited.filter(recipe=recipe).exists()):
             raise serializers.ValidationError(
                 'Этого рецепта не было в вашем избранном')
 
@@ -210,13 +208,11 @@ class ShoppingCartSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         recipe = obj['recipe']
 
-        if (self.context.get('request').method == 'GET'
-            and user.is_in_shopping_cart.filter(recipe=recipe).exists()):
+        if (self.context.get('request').method == 'GET' and user.is_in_shopping_cart.filter(recipe=recipe).exists()):
             raise serializers.ValidationError(
                 'Этот рецепт уже есть в списке покупок')
 
-        if (self.context.get('request').method == 'DELETE'
-            and not user.is_in_shopping_cart.filter(recipe=recipe).exists()):
+        if (self.context.get('request').method == 'DELETE' and not user.is_in_shopping_cart.filter(recipe=recipe).exists()):
             raise serializers.ValidationError(
                 'Этого рецепта не было в вашем списке покупок')
 

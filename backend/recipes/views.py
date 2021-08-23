@@ -72,8 +72,7 @@ class RecipeViewSet(
             data=data,
             context={'request': request}
         )
-        if (request.method == 'GET'
-            and serializer.is_valid()):
+        if (request.method == 'GET' and serializer.is_valid()):
             FavoriteRecipe.objects.create(user=user, recipe=recipe)
             serializer = serializers.FavoriteRecipeSerializer(
                 recipe,
@@ -84,8 +83,7 @@ class RecipeViewSet(
                 status=status.HTTP_201_CREATED
             )
 
-        if (request.method == 'DELETE'
-            and serializer.is_valid()):
+        if (request.method == 'DELETE' and serializer.is_valid()):
             FavoriteRecipe.objects.filter(user=user, recipe=recipe).delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -105,8 +103,7 @@ class RecipeViewSet(
             data=data,
             context={'request': request}
         )
-        if (request.method == 'GET'
-            and serializer.is_valid()):
+        if (request.method == 'GET' and serializer.is_valid()):
             ShoppingList.objects.create(user=user, recipe=recipe)
             serializer = serializers.FavoriteRecipeSerializer(
                 recipe,
@@ -117,8 +114,7 @@ class RecipeViewSet(
                 status=status.HTTP_201_CREATED
             )
 
-        if (request.method == 'DELETE'
-            and serializer.is_valid()):
+        if (request.method == 'DELETE' and serializer.is_valid()):
             ShoppingList.objects.filter(user=user, recipe=recipe).delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
 
