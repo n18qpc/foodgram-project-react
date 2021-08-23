@@ -44,11 +44,11 @@ class UserViewSet(viewsets.ModelViewSet):
             data=request.data,
             context={'request': request}
         )
-        serializer.is_valid()
-        new_password = serializer.validated_data['new_password']
-        self.request.user.set_password(new_password)
-        self.request.user.save()
-        return Response(data={}, status=status.HTTP_201_CREATED)
+        if serializer.is_valid():
+            new_password = serializer.validated_data['new_password']
+            self.request.user.set_password(new_password)
+            self.request.user.save()
+            return Response(data={}, status=status.HTTP_201_CREATED)
 
     @action(detail=False,
             methods=['get'],
