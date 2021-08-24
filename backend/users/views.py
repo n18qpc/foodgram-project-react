@@ -49,6 +49,7 @@ class UserViewSet(viewsets.ModelViewSet):
             self.request.user.set_password(new_password)
             self.request.user.save()
             return Response(data={}, status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False,
             methods=['get'],
